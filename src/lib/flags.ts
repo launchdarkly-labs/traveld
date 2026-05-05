@@ -10,6 +10,8 @@ export const FLAG_KEYS = {
   checkoutLayout: "checkout-layout",
   /** Boolean: show the in-app LD Admin debug panel. */
   ldAdminPanel: "traveld-ld-admin",
+  /** Boolean: tile grid on /articles instead of stacked rows. */
+  allArticlesTileLayout: "all-articles-tile-layout",
 } as const;
 
 /** Values must match LaunchDarkly variation payloads (snake_case recommended). */
@@ -24,6 +26,7 @@ export const DEFAULT_FLAGS: Record<string, unknown> = {
   [FLAG_KEYS.upgradeMessaging]: "default" satisfies MessagingVariation,
   [FLAG_KEYS.checkoutLayout]: false,
   [FLAG_KEYS.ldAdminPanel]: false,
+  [FLAG_KEYS.allArticlesTileLayout]: false,
 };
 
 /** Accepts LD string values plus common human labels if configured that way. */

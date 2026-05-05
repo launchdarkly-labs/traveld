@@ -39,6 +39,7 @@ Use LaunchDarkly project **`trave-ld-demo-app`** (or mirror the same flag keys/v
 | `free-daily-article-limit` | String / multivariate | `control`, `limit_2_per_day` | **Experiment 2:** free accounts limited to **2 distinct full article views per calendar day** |
 | `upgrade-messaging` | String / multivariate | `default`, `urgency`, `social_proof` | **Experiment 3:** copy on gates and daily-limit prompt |
 | `checkout-layout` | Boolean | `true` / `false` | Optional **fourth demo:** alternate fake checkout layout on `/upgrade` |
+| `all-articles-tile-layout` | Boolean | `true` / `false` | **All articles:** tile grid on `/articles` instead of stacked rows (default **off**) |
 | `traveld-ld-admin` | Boolean | `true` / `false` | **LD Admin** in-app debug panel (context, evaluations, events). Default **off**; turn **on** in LD when you need it. |
 
 ### Precedence (how the demo behaves)
