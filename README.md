@@ -4,8 +4,11 @@ TraveLD is a **demo vacation travel blog** used to teach **LaunchDarkly experime
 
 ## Quick start
 
+**Prerequisites:** [Node.js](https://nodejs.org/) (LTS recommended) and npm.
+
 ```bash
-cd /Users/briannorman/workspace/traveld
+git clone https://github.com/launchdarkly-labs/traveld.git
+cd traveld
 npm install
 cp .env.example .env.local
 ```
@@ -18,9 +21,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+**Other commands:** `npm run build` (production build), `npm run start` (run the production server after a build), `npm run lint` (ESLint).
+
 ## Content
 
-Ten realistic sample articles live in [`/Users/briannorman/workspace/traveld/content/articles.json`](/Users/briannorman/workspace/traveld/content/articles.json). Each post has an `intro` plus structured `sections` so a **partial-article** paywall can show a teaser without exposing the full article.
+Ten realistic sample articles live in [`content/articles.json`](content/articles.json). Each post has an `intro` plus structured `sections` so a **partial-article** paywall can show a teaser without exposing the full article.
 
 ## Demo auth and tiers
 
@@ -53,10 +58,10 @@ Use LaunchDarkly project **`trave-ld-demo-app`** (or mirror the same flag keys/v
 
 ## Custom events (for LaunchDarkly metrics)
 
-The app calls `track()` when a LaunchDarkly client exists (see [`/Users/briannorman/workspace/traveld/src/lib/track.ts`](/Users/briannorman/workspace/traveld/src/lib/track.ts)). Suggested metric hooks:
+The app calls `track()` when a LaunchDarkly client exists (see [`src/lib/track.ts`](src/lib/track.ts)). Suggested metric hooks:
 
 | Event | When | Useful properties |
-|-------|------|---------------------|
+|-------|------|-------------------|
 | `article_view` | First render of an article for a given `surface` | `slug`, `surface` (`full` \| `preview` \| `blocked` \| `limit`), `pay_wall`, `user_tier`, `source` |
 | `paywall_shown` | Anonymous paywall visible (full block or partial teaser) | `slug` |
 | `create_account_clicked` | Any “create account” path toward `/signup` | `source` (`header` \| `hero` \| `login_prompt` \| `account_anonymous` \| `paywall`), optional `slug` on articles |
@@ -78,7 +83,7 @@ Context fields sent today: `key`, `email` (if logged in), `tier` (`anonymous` \|
 
 ## Production-ish auth (optional)
 
-To swap demo auth for **Clerk**, **Auth0**, or **Supabase**, replace [`/Users/briannorman/workspace/traveld/src/context/session.tsx`](/Users/briannorman/workspace/traveld/src/context/session.tsx) with their session model and continue building `LDContext` in [`/Users/briannorman/workspace/traveld/src/lib/ld-context.ts`](/Users/briannorman/workspace/traveld/src/lib/ld-context.ts): stable `key`, plus `tier` (and any segments you need).
+To swap demo auth for **Clerk**, **Auth0**, or **Supabase**, replace [`src/context/session.tsx`](src/context/session.tsx) with their session model and continue building `LDContext` in [`src/lib/ld-context.ts`](src/lib/ld-context.ts): stable `key`, plus `tier` (and any segments you need).
 
 ## Flag flash
 
@@ -86,9 +91,9 @@ Article pages show a short **skeleton** until `useLDClient()` is defined, so use
 
 ## Key source files
 
-- [`/Users/briannorman/workspace/traveld/src/lib/article-policy.ts`](/Users/briannorman/workspace/traveld/src/lib/article-policy.ts) — paywall + daily limit rules
-- [`/Users/briannorman/workspace/traveld/src/components/ArticleExperience.tsx`](/Users/briannorman/workspace/traveld/src/components/ArticleExperience.tsx) — article UI + instrumentation
-- [`/Users/briannorman/workspace/traveld/src/components/LaunchDarklyWrapper.tsx`](/Users/briannorman/workspace/traveld/src/components/LaunchDarklyWrapper.tsx) — `LDProvider` + context from session
+- [`src/lib/article-policy.ts`](src/lib/article-policy.ts) — paywall + daily limit rules
+- [`src/components/ArticleExperience.tsx`](src/components/ArticleExperience.tsx) — article UI + instrumentation
+- [`src/components/LaunchDarklyWrapper.tsx`](src/components/LaunchDarklyWrapper.tsx) — `LDProvider` + context from session
 
 ## Other experiment ideas (for your deck)
 
