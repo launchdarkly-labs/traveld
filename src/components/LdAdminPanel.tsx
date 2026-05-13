@@ -132,7 +132,7 @@ function LdAdminPanelBody({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-4 right-4 z-[100] rounded-full border border-[var(--travel-border)] bg-[var(--travel-surface)] px-3 py-2 text-xs font-medium text-[var(--travel-ink)] shadow-lg shadow-black/40 transition hover:border-[var(--travel-sea)]/50 hover:text-[var(--travel-sea)]"
+        className="fixed top-4 right-4 z-[100] rounded-full border border-[var(--travel-border)] bg-[var(--travel-surface)] px-3 py-2 text-xs font-medium text-[var(--travel-ink)] shadow-lg shadow-black/40 transition hover:border-[var(--travel-sea)]/50 hover:text-[var(--travel-sea)]"
         aria-expanded={open}
         aria-controls="ld-admin-panel"
       >
@@ -142,7 +142,7 @@ function LdAdminPanelBody({
       {open ? (
         <div
           id="ld-admin-panel"
-          className="fixed inset-x-3 bottom-16 z-[100] flex max-h-[min(72vh,560px)] flex-col rounded-xl border border-[var(--travel-border)] bg-[var(--travel-surface)] shadow-2xl shadow-black/50 sm:left-auto sm:right-4 sm:w-[min(100%,420px)]"
+          className="fixed inset-x-3 top-16 z-[100] flex max-h-[min(72vh,560px)] flex-col rounded-xl border border-[var(--travel-border)] bg-[var(--travel-surface)] shadow-2xl shadow-black/50 sm:left-auto sm:right-4 sm:w-[min(100%,420px)]"
           role="dialog"
           aria-label="LaunchDarkly admin"
         >

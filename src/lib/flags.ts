@@ -10,7 +10,7 @@ export const FLAG_KEYS = {
   checkoutLayout: "checkout-layout",
   /** Boolean: show the in-app LD Admin debug panel. */
   ldAdminPanel: "traveld-ld-admin",
-  /** Boolean: load the LaunchDarkly developer toolbar in local development. */
+  /** Boolean: load the LaunchDarkly developer toolbar. */
   ldDevToolbar: "traveld-ld-dev-toolbar",
   /** Boolean: tile grid on /articles instead of stacked rows. */
   allArticlesTileLayout: "all-articles-tile-layout",
