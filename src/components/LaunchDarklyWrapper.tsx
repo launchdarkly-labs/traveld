@@ -2,10 +2,15 @@
 
 import { LDProvider } from "launchdarkly-react-client-sdk";
 import { useMemo } from "react";
+import { LaunchDarklyDevToolbar } from "@/components/LaunchDarklyDevToolbar";
 import { LdAdminWithLd } from "@/components/LdAdminPanel";
 import { LdContextIdentifyEffect } from "@/components/LdContextIdentifyEffect";
 import { useSession } from "@/context/session";
 import { buildLdContext } from "@/lib/ld-context";
+import {
+  eventInterceptionPlugin,
+  flagOverridePlugin,
+} from "@/lib/ld-toolbar-plugins";
 
 const clientSideID = process.env.NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_SIDE_ID ?? "";
 
@@ -33,10 +38,14 @@ export function LaunchDarklyWrapper({
     <LDProvider
       clientSideID={clientSideID}
       context={context}
-      options={{ evaluationReasons: true }}
+      options={{
+        evaluationReasons: true,
+        plugins: [flagOverridePlugin, eventInterceptionPlugin],
+      }}
       reactOptions={{ useCamelCaseFlagKeys: false }}
     >
       <LdContextIdentifyEffect />
+      <LaunchDarklyDevToolbar />
       {children}
       <LdAdminWithLd />
     </LDProvider>

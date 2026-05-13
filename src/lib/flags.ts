@@ -10,6 +10,8 @@ export const FLAG_KEYS = {
   checkoutLayout: "checkout-layout",
   /** Boolean: show the in-app LD Admin debug panel. */
   ldAdminPanel: "traveld-ld-admin",
+  /** Boolean: load the LaunchDarkly developer toolbar in local development. */
+  ldDevToolbar: "traveld-ld-dev-toolbar",
   /** Boolean: tile grid on /articles instead of stacked rows. */
   allArticlesTileLayout: "all-articles-tile-layout",
 } as const;
@@ -26,6 +28,7 @@ export const DEFAULT_FLAGS: Record<string, unknown> = {
   [FLAG_KEYS.upgradeMessaging]: "default" satisfies MessagingVariation,
   [FLAG_KEYS.checkoutLayout]: false,
   [FLAG_KEYS.ldAdminPanel]: false,
+  [FLAG_KEYS.ldDevToolbar]: false,
   [FLAG_KEYS.allArticlesTileLayout]: false,
 };
 
