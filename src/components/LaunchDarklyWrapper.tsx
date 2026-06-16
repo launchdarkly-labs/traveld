@@ -10,6 +10,8 @@ import { buildLdContext } from "@/lib/ld-context";
 import {
   eventInterceptionPlugin,
   flagOverridePlugin,
+  observabilityPlugin,
+  sessionReplayPlugin,
 } from "@/lib/ld-toolbar-plugins";
 
 const clientSideID = process.env.NEXT_PUBLIC_LAUNCHDARKLY_CLIENT_SIDE_ID ?? "";
@@ -40,7 +42,7 @@ export function LaunchDarklyWrapper({
       context={context}
       options={{
         evaluationReasons: true,
-        plugins: [flagOverridePlugin, eventInterceptionPlugin],
+        plugins: [flagOverridePlugin, eventInterceptionPlugin, observabilityPlugin, sessionReplayPlugin],
       }}
       reactOptions={{ useCamelCaseFlagKeys: false }}
     >

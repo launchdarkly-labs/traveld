@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@launchdarkly/observability": "^1.1.14",
+    "@launchdarkly/session-replay": "^1.1.14",
     "@launchdarkly/toolbar": "^2.3.1",
     "launchdarkly-react-client-sdk": "^3.9.0",
     "next": "16.2.3",
