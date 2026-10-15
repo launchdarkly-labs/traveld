@@ -14,6 +14,10 @@ export const FLAG_KEYS = {
   ldDevToolbar: "traveld-ld-dev-toolbar",
   /** Boolean: tile grid on /articles instead of stacked rows. */
   allArticlesTileLayout: "all-articles-tile-layout",
+  /** Boolean: pin site header while scrolling. */
+  stickyTopNav: "sticky-top-nav",
+  /** Boolean: red style for header Create Account CTA. */
+  redCreateAccountButton: "red-create-account-button",
 } as const;
 
 /** Values must match LaunchDarkly variation payloads (snake_case recommended). */
@@ -30,6 +34,8 @@ export const DEFAULT_FLAGS: Record<string, unknown> = {
   [FLAG_KEYS.ldAdminPanel]: false,
   [FLAG_KEYS.ldDevToolbar]: false,
   [FLAG_KEYS.allArticlesTileLayout]: false,
+  [FLAG_KEYS.stickyTopNav]: false,
+  [FLAG_KEYS.redCreateAccountButton]: false,
 };
 
 /** Accepts LD string values plus common human labels if configured that way. */

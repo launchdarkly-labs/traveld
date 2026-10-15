@@ -1,9 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useFlags } from "launchdarkly-react-client-sdk";
 import { useEffect, useRef, useState } from "react";
 import { CreateAccountLink } from "@/components/CreateAccountLink";
+import { hasLaunchDarklyClientId } from "@/components/LaunchDarklyWrapper";
 import { useSession } from "@/context/session";
+import { DEFAULT_FLAGS, FLAG_KEYS } from "@/lib/flags";
+
+const HAS_LD = hasLaunchDarklyClientId();
 
 function ProfileMenu() {
   const session = useSession();
@@ -84,11 +89,43 @@ function ProfileMenu() {
   );
 }
 
+const CREATE_ACCOUNT_DEFAULT_CLASS =
+  "rounded-full bg-gradient-to-r from-[var(--travel-sea-deep)] to-[var(--travel-sea)] px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_-4px_var(--travel-glow)] transition hover:brightness-110";
+const CREATE_ACCOUNT_RED_CLASS =
+  "rounded-full bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-500";
+
 export function SiteHeader() {
+  if (HAS_LD) return <SiteHeaderWithLd />;
+  return <SiteHeaderInner sticky={false} redCreateAccount={false} />;
+}
+
+function SiteHeaderWithLd() {
+  const flags = useFlags();
+  const sticky = Boolean(
+    flags[FLAG_KEYS.stickyTopNav] ?? DEFAULT_FLAGS[FLAG_KEYS.stickyTopNav],
+  );
+  const redCreateAccount = Boolean(
+    flags[FLAG_KEYS.redCreateAccountButton] ??
+      DEFAULT_FLAGS[FLAG_KEYS.redCreateAccountButton],
+  );
+  return (
+    <SiteHeaderInner sticky={sticky} redCreateAccount={redCreateAccount} />
+  );
+}
+
+function SiteHeaderInner({
+  sticky,
+  redCreateAccount,
+}: {
+  sticky: boolean;
+  redCreateAccount: boolean;
+}) {
   const session = useSession();
 
   return (
-    <header className="border-b border-[var(--travel-border)] bg-[var(--travel-surface)]/80 backdrop-blur-md">
+    <header
+      className={`${sticky ? "sticky top-0 z-40 " : ""}border-b border-[var(--travel-border)] bg-[var(--travel-surface)]/80 backdrop-blur-md`}
+    >
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-4 py-4">
         <div className="flex min-w-0 flex-1 items-center gap-6 sm:gap-10">
           <Link
@@ -124,7 +161,11 @@ export function SiteHeader() {
             <CreateAccountLink
               href="/signup"
               source="header"
-              className="rounded-full bg-gradient-to-r from-[var(--travel-sea-deep)] to-[var(--travel-sea)] px-4 py-2 text-sm font-medium text-white shadow-[0_0_20px_-4px_var(--travel-glow)] transition hover:brightness-110"
+              className={
+                redCreateAccount
+                  ? CREATE_ACCOUNT_RED_CLASS
+                  : CREATE_ACCOUNT_DEFAULT_CLASS
+              }
             >
               Create Account
             </CreateAccountLink>
