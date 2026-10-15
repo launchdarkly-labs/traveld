@@ -2,6 +2,7 @@
 export type CreateAccountClickSource =
   | "header"
   | "hero"
+  | "home_banner"
   | "login_prompt"
   | "account_anonymous"
   | "paywall";

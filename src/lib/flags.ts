@@ -18,6 +18,8 @@ export const FLAG_KEYS = {
   stickyTopNav: "sticky-top-nav",
   /** Boolean: red style for header Create Account CTA. */
   redCreateAccountButton: "red-create-account-button",
+  /** Boolean: show the "subscribe to updates" sign-up banner on the homepage. */
+  homepageSignupBanner: "homepage-signup-banner",
 } as const;
 
 /** Values must match LaunchDarkly variation payloads (snake_case recommended). */
@@ -36,6 +38,7 @@ export const DEFAULT_FLAGS: Record<string, unknown> = {
   [FLAG_KEYS.allArticlesTileLayout]: false,
   [FLAG_KEYS.stickyTopNav]: false,
   [FLAG_KEYS.redCreateAccountButton]: false,
+  [FLAG_KEYS.homepageSignupBanner]: false,
 };
 
 /** Accepts LD string values plus common human labels if configured that way. */

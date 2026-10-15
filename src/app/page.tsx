@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeroSignupCta } from "@/components/HeroSignupCta";
+import { SubscribeBanner } from "@/components/SubscribeBanner";
 import { getAllArticles } from "@/lib/articles";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-14">
+      <SubscribeBanner />
       <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#1e1048] via-[var(--travel-sea-deep)] to-[#0a1628] p-10 text-white shadow-[0_0_60px_-12px_var(--travel-glow)]">
         <div
           className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[var(--travel-sea)]/25 blur-3xl"
