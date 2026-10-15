@@ -233,10 +233,10 @@ function ArticleBody({
       <p className="text-xs uppercase tracking-wide text-[var(--travel-muted)]">
         {article.tags.join(" · ")}
       </p>
-      <h1 className="font-serif text-3xl font-semibold text-[var(--travel-ink)] sm:text-4xl">
+      <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight text-[var(--travel-ink)] sm:text-4xl">
         {article.title}
       </h1>
-      <p className="text-sm text-[var(--travel-muted)]">
+      <p className="mt-4 text-sm text-[var(--travel-muted)]">
         {article.author} · {new Date(article.date).toLocaleDateString()}
       </p>
 
@@ -298,7 +298,7 @@ function ArticleBody({
         </div>
       ) : (
         <>
-          <p className="lead text-lg text-[var(--travel-ink)]">{article.intro}</p>
+          <p className="lead mt-8 text-lg text-[var(--travel-ink)]">{article.intro}</p>
 
           {policy.showPreviewTeaser && session.effectiveTier === "anonymous" ? (
             <div className="relative mt-6">
