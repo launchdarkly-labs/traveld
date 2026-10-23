@@ -24,7 +24,7 @@ export default function Home() {
           Curated travel guides
         </p>
         <h1 className="relative mt-3 max-w-2xl font-serif text-4xl font-semibold leading-tight sm:text-5xl">
-          Guides for travelers who'd rather stay curious than stay on schedule.
+          Guides for travelers who&apos;d rather stay curious than stay on schedule.
         </h1>
         <div className="relative mt-8 flex flex-wrap gap-3">
           <Link
