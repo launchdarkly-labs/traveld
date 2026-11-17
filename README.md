@@ -4,7 +4,7 @@ TraveLD is a **demo vacation travel blog** used to teach **LaunchDarkly experime
 
 ## Quick start
 
-**Prerequisites:** [Node.js](https://nodejs.org/) (LTS recommended) and npm.
+**Prerequisites:** [Node.js](https://nodejs.org/) **22 or newer** and npm. The repo ships an `.nvmrc`, so `nvm use` selects the right version. On Node 20, `npm run build` fails while prerendering (`(intermediate value).blob is not a function`): the bundled observability SDK replaces Node 20's global `Response`, which Node 22+ is immune to.
 
 ```bash
 git clone https://github.com/launchdarkly-labs/traveld.git
