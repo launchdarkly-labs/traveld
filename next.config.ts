@@ -14,6 +14,9 @@ const basePath =
 const nextConfig: NextConfig = {
   output: "export",
   ...(basePath ? { basePath } : {}),
+  experimental: {
+    agentUpgrade: "security",
+  },
 };
 
 export default nextConfig;
